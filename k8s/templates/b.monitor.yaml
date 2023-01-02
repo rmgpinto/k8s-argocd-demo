@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: app-b
+  namespace: default
+spec:
+  endpoints:
+    - interval: 1m
+      path: /metrics
+      port: http
+  jobLabel: app-b
+  namespaceSelector:
+    matchNames:
+      - default
+  selector:
+    matchLabels:
+      app: app-b

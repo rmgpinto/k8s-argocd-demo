@@ -1,0 +1,46 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: app-a
+  namespace: default
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: app-a
+  template:
+    metadata:
+      labels:
+        app: app-a
+    spec:
+      containers:
+        - name: app-a
+          image: 930237623491.dkr.ecr.us-east-2.amazonaws.com/app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: HTTP_CODE
+              value: "200"
+  strategy:
+    canary:
+      stableService: app-a-stable
+      canaryService: app-a-canary
+      stableMetadata:
+        labels:
+          role: stable
+          kuma.io/sidecar-injection: enabled
+      canaryMetadata:
+        labels:
+          role: canary
+          kuma.io/sidecar-injection: enabled
+      # analysis:
+      #   templates:
+      #     - templateName: app-a-analysis
+      steps:
+        - setWeight: 20 # 1 pod canary / 4 pods stable
+        - pause: { duration: 2m }
+        - setWeight: 40 # 2 pods canary / 3 pods stable
+        - pause: { duration: 30s }
+        - setWeight: 60 # 3 pods canary / 2 pods stable
+        - pause: { duration: 30s }

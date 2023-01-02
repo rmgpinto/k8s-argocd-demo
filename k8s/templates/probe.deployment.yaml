@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: probe
+  namespace: default
+  labels:
+    app: probe
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: probe
+  template:
+    metadata:
+      labels:
+        app: probe
+    spec:
+      containers:
+        - name: probe
+          image: alpine:latest
+          command:
+            - /bin/sh
+            - -c
+            - |
+              apk add curl
+              while [ "1" = "1" ]; do
+                sleep 1
+                echo $(date) $(curl -s http://main.default:8080)
+              done
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 1Gi

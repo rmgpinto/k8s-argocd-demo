@@ -10,7 +10,7 @@ metrics = PrometheusMetrics(app)
 def main():
     req_a = get(environ.get("MICROSERVICE_A"))
     req_b = get(environ.get("MICROSERVICE_B"))
-    return {"a": req_a.text, "b": req_b.text }
+    return {"a_http_code": req_a.status_code, "a_result": req_a.text, "b_http_code": req_b.status_code, "b_result": req_b.text }
 
 if __name__ == "__main__":
     app.run()
