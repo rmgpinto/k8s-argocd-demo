@@ -29,9 +29,11 @@ spec:
       stableMetadata:
         labels:
           role: stable
+          kuma.io/sidecar-injection: enabled
       canaryMetadata:
         labels:
           role: canary
+          kuma.io/sidecar-injection: enabled
       # analysis:
       #   templates:
       #     - templateName: app-b-bnalysis
