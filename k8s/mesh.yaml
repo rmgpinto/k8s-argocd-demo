@@ -1,0 +1,27 @@
+apiVersion: kuma.io/v1alpha1
+kind: Mesh
+metadata:
+  name: default
+spec:
+  metrics:
+    enabledBackend: prometheus
+    backends:
+      - name: prometheus
+        type: prometheus
+---
+apiVersion: kuma.io/v1alpha1
+kind: MeshGateway
+mesh: default
+metadata:
+  name: edge-gateway
+spec:
+  selectors:
+    - match:
+        kuma.io/service: edge-gateway
+  conf:
+    listeners:
+      - port: 8080
+        protocol: HTTP
+        hostname: foo.example.com
+        tags:
+          port: http/8080

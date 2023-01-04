@@ -29,10 +29,12 @@ spec:
       stableMetadata:
         labels:
           role: stable
+          kuma.io/gateway: enabled
           kuma.io/sidecar-injection: enabled
       canaryMetadata:
         labels:
           role: canary
+          kuma.io/gateway: enabled
           kuma.io/sidecar-injection: enabled
       # analysis:
       #   templates:

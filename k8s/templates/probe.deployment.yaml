@@ -14,6 +14,7 @@ spec:
     metadata:
       labels:
         app: probe
+        kuma.io/gateway: enabled
         kuma.io/sidecar-injection: enabled
     spec:
       containers:
