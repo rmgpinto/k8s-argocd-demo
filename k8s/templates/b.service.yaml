@@ -11,6 +11,7 @@ spec:
   ports:
     - name: http
       protocol: TCP
+      appProtocol: http
       port: 8080
       targetPort: 8080
 ---
@@ -24,6 +25,7 @@ spec:
     app: app-b
   ports:
     - protocol: TCP
+      appProtocol: http
       port: 8080
       targetPort: 8080
 ---
@@ -37,5 +39,6 @@ spec:
     app: app-b
   ports:
     - protocol: TCP
+      appProtocol: http
       port: 8080
       targetPort: 8080
