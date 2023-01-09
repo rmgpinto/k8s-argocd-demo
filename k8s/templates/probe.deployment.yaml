@@ -30,7 +30,7 @@ spec:
           env:
             - name: MAIN_ADDR
             {{- if .Values.mesh }}
-              value: main_default_svc_8080.mesh:80
+              value: http://main_default_svc_8080.mesh:80
             {{- else }}
               value: http://main.default:8080
             {{- end }}
