@@ -31,14 +31,14 @@ spec:
       stableMetadata:
         labels:
           role: stable
-          {{ if .Values.mesh -}}
+          {{- if .Values.mesh }}
           kuma.io/gateway: enabled
           kuma.io/sidecar-injection: enabled
-          {{ end -}}
+          {{- end }}
       canaryMetadata:
         labels:
           role: canary
-          {{ if .Values.mesh -}}
+          {{- if .Values.mesh }}
           kuma.io/gateway: enabled
           kuma.io/sidecar-injection: enabled
           {{- end }}
