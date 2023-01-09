@@ -33,6 +33,13 @@ spec:
                 sleep 1
                 echo $(date) $(curl -s http://main.default:8080)
               done
+          env:
+            - name: MAIN_ADDR
+            {{- if .Values.mesh }}
+              value: main_default_svc_8080.mesh:80
+            {{- else }}
+              value: http://main.default:8080
+            {{- else }}
           resources:
             limits:
               cpu: 1000m
