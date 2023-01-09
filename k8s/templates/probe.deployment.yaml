@@ -14,8 +14,10 @@ spec:
     metadata:
       labels:
         app: probe
+        {{ if .Values.mesh -}}
         kuma.io/gateway: enabled
         kuma.io/sidecar-injection: enabled
+        {{ end -}}
     spec:
       containers:
         - name: probe
