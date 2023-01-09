@@ -25,7 +25,7 @@ spec:
               apk add curl
               while [ "1" = "1" ]; do
                 sleep 1
-                echo $(date) $(curl -s http://main.default:8080)
+                echo $(date) $(curl -s $MAIN_ADDR)
               done
           env:
             - name: MAIN_ADDR
