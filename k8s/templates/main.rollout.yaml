@@ -41,7 +41,7 @@ spec:
           {{ if .Values.mesh -}}
           kuma.io/gateway: enabled
           kuma.io/sidecar-injection: enabled
-          {{ end -}}
+          {{- end }}
       steps:
         - setWeight: 20
         - pause: { duration: 2m }
