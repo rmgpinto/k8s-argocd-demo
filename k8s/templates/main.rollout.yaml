@@ -26,8 +26,8 @@ spec:
               value: http://app-b.default:8080
   strategy:
     canary:
-      stableService: main-stable
-      canaryService: main-canary
+      # stableService: main-stable
+      # canaryService: main-canary
       stableMetadata:
         labels:
           role: stable
