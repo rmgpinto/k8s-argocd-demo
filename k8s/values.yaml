@@ -1,2 +1,5 @@
 mesh: true
 gateway: false
+image:
+  repository: 745815529977.dkr.ecr.us-east-2.amazonaws.com/dmarc-digests
+  tag: ""

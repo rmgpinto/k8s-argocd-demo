@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: dmarc-digests
-          image: 745815529977.dkr.ecr.us-east-2.amazonaws.com/dmarc-digests
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           command:
             - /bin/sh
             - -c

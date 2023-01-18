@@ -4,8 +4,9 @@ metadata:
   name: k8s-demo
   namespace: argocd
   annotations:
-    argocd-image-updater.argoproj.io/image-list: 745815529977.dkr.ecr.us-east-2.amazonaws.com/dmarc-digests
+    argocd-image-updater.argoproj.io/image-list: dmarc-digests=745815529977.dkr.ecr.us-east-2.amazonaws.com/dmarc-digests:latest
     argocd-image-updater.argoproj.io/dmarc-digests.update-strategy: digest
+    argocd-image-updater.argoproj.io/dmarc-digests.helm.image-tag: image.tag
 spec:
   destination:
     namespace: k8s-demo
