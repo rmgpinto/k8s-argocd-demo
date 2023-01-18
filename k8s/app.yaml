@@ -11,7 +11,7 @@ spec:
   source:
     path: k8s
     repoURL: https://github.com/rmgpinto/k8s-argocd-demo.git
-    targetRevision: HEAD
+    targetRevision: dd
     helm:
       valueFiles:
         - values.yaml

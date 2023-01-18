@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dmarc-digests
+  namespace: default
+  labels:
+    app: dmarc-digests
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dmarc-digests
+  template:
+    metadata:
+      labels:
+        app: dmarc-digests
+    spec:
+      containers:
+        - name: dmarc-digests
+          image: 745815529977.dkr.ecr.us-east-2.amazonaws.com/dmarc-digests
+          command:
+            - /bin/sh
+            - -c
+            - |
+              sleep 999
