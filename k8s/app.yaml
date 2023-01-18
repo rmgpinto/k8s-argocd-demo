@@ -3,6 +3,9 @@ kind: Application
 metadata:
   name: k8s-demo
   namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: 745815529977.dkr.ecr.us-east-2.amazonaws.com/dmarc-digests
+    argocd-image-updater.argoproj.io/dmarc-digests.update-strategy: digest
 spec:
   destination:
     namespace: k8s-demo

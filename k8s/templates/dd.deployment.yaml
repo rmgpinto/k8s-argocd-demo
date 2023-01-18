@@ -23,3 +23,5 @@ spec:
             - -c
             - |
               sleep 999
+      nodeSelector:
+        kubernetes.io/arch=amd64
